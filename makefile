@@ -12,3 +12,6 @@ clean:
 
 folders:
 	cd test && npm install
+
+check:
+	goreleaser check
