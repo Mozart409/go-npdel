@@ -18,3 +18,6 @@ check:
 
 vet:
 	go vet
+
+# git tag -a "v0.0.1" -m "this is release v0.0.1"
+# git push origin v0.0.1
