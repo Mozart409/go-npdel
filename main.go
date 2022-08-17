@@ -15,9 +15,6 @@ func main() {
 
 	folders := findNodeModules()
 
-	if folders == nil {
-		log.Fatal("No node_modules found")
-	}
 	fmt.Println(folders)
 
 	cli.VersionFlag = &cli.BoolFlag{
@@ -72,11 +69,6 @@ func findNodeModules() []string {
 		log.Fatal(err)
 	}
 
-	/* for _, folder := range folders {
-
-		fmt.Println(folder)
-	} */
-
 	return folders
 }
 
@@ -89,23 +81,6 @@ func selectUi(options []string) []string {
 		PageSize: 10,
 	}
 	survey.AskOne(prompt, &result)
-
-	/* prompt2 := promptui.Select{
-		Label: "Select Folder",
-		Items: options,
-		Size:  8,
-	}
-
-	_, result, err := prompt2.Run()
-
-	if err != nil {
-		fmt.Printf("Prompt failed %v\n", err)
-
-	}
-
-	fmt.Printf("You choose %q\n", result)
-
-	return result, err */
 
 	return result
 }

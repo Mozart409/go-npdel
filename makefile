@@ -15,3 +15,6 @@ folders:
 
 check:
 	goreleaser check
+
+vet:
+	go vet
