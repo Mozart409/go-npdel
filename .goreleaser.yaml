@@ -13,16 +13,7 @@ builds:
       - darwin
       - windows
       - freebsd
-archives:
-  - files:
-      - README.md
-      - LICENSE
-    replacements:
-      darwin: Darwin
-      linux: Linux
-      windows: Windows
-      386: i386
-      amd64: x86_64
+
 checksum:
   name_template: 'checksums.txt'
 snapshot:
