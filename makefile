@@ -4,8 +4,8 @@ dev: folders clear
 clear:
 	clear
 
-build: clean
-	goreleaser build
+build: clear clean
+	goreleaser build --snapshot
 
 clean:
 	rm -rf ./dist
