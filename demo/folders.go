@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 )
 
@@ -13,6 +14,13 @@ func main() {
 
 		// convert i to string
 		s := fmt.Sprintf("%d", i)
-		os.WriteFile("./demo/node_modules/"+s, []byte("hello"), 0644)
+		file, err := os.Create("./demo/node_modules/" + s)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		if err := file.Truncate(1e7); err != nil {
+			log.Fatal(err)
+		}
 	}
 }

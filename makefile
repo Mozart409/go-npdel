@@ -1,4 +1,4 @@
-dev: clear
+dev: folders clear
 	go run ./main.go
 
 clear:
