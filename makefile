@@ -4,8 +4,8 @@ dev: folders clear
 clear:
 	clear
 
-build:
-	go build -o ./dist/go-npdel
+build: clean
+	goreleaser build
 
 clean:
 	rm -rf ./dist
