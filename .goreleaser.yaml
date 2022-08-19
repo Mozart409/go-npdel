@@ -18,13 +18,13 @@ builds:
 
 dockers:
   - image_templates:
-      - 'ghcr.io/mozart409/npdel:{{ .Version }}-amd64'
+      - 'ghcr.io/mozart409/go-npdel:{{ .Version }}-amd64'
     use: buildx
     dockerfile: Dockerfile
     build_flag_templates:
       - '--platform=linux/amd64'
   - image_templates:
-      - 'ghcr.io/mozart409/npdel:{{ .Version }}-arm64v8'
+      - 'ghcr.io/mozart409/go-npdel:{{ .Version }}-arm64v8'
     use: buildx
     goarch: arm64
     dockerfile: Dockerfile
@@ -39,13 +39,13 @@ dockers:
       - '--label=org.opencontainers.image.version={{.Version}}'
 
 docker_manifests:
-  - name_template: ghcr.io/mozart409/npdel:{{ .Version }}
+  - name_template: ghcr.io/mozart409/go-npdel:{{ .Version }}
 
   # Image name templates to be added to this manifest.
   # Defaults to empty.
   - image_templates:
-      - ghcr.io/mozart409/npdel:{{ .Version }}-amd64
-      - ghcr.io/mozart409/npdel:{{ .Version }}-arm64v8
+      - ghcr.io/mozart409/go-npdel:{{ .Version }}-amd64
+      - ghcr.io/mozart409/go-npdel:{{ .Version }}-arm64v8
 
   - image_templates:
       - foo/bar:{{ .Version }}-amd64
