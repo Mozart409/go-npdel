@@ -1,15 +1,6 @@
-FROM golang:1.18 as Builder
+# THIS IS A DOCKERFILE FOR GORELEASER 
 
-LABEL org.opencontainers.image.authors="amadeus@mozart409.com"
-LABEL org.opencontainers.image.created="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-
+FROM scratch 
 WORKDIR /app
-COPY . .
-RUN go mod tidy
-
-RUN go build -o /app/go-npdel
-
-FROM scratch as Runner
-WORKDIR /app
-COPY --from=Builder /app/go-npdel .
-ENTRYPOINT ["/app/go-npdel"]
+COPY npdel .
+ENTRYPOINT ["/npdel"]

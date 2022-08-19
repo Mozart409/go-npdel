@@ -37,6 +37,7 @@ dockers:
       - '--label=org.opencontainers.image.title={{.ProjectName}}'
       - '--label=org.opencontainers.image.revision={{.FullCommit}}'
       - '--label=org.opencontainers.image.version={{.Version}}'
+      - '--label=org.opencontainers.image.authors="amadeus@mozart409.com"'
 
 docker_manifests:
   - name_template: ghcr.io/mozart409/go-npdel:{{ .Version }}
