@@ -11,7 +11,7 @@ clean:
 	rm -rf ./dist
 
 folders:
-	cd test && npm install
+	go run ./demo/folders.go
 
 check:
 	goreleaser check

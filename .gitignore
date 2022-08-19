@@ -21,7 +21,7 @@
 go.work
 
 dist/
-test/node_modules
+demo/node_modules
 
 .vscode
 yarn.lock
