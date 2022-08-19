@@ -15,7 +15,9 @@ func main() {
 
 	folders := findNodeModules()
 
-	fmt.Println(folders)
+	if len(folders) == 0 {
+		log.Fatal("No node_modules found")
+	}
 
 	cli.VersionFlag = &cli.BoolFlag{
 		Name:    "version",
