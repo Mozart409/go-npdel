@@ -1,5 +1,6 @@
 # This is an example .goreleaser.yml file with some sensible defaults.
 # Make sure to check the documentation at https://goreleaser.com
+
 before:
   hooks:
     # You may remove this if you don't use go modules.
@@ -8,11 +9,50 @@ builds:
   - env:
       - CGO_ENABLED=0
     dir: .
+    binary: npdel
     goos:
       - linux
       - darwin
       - windows
       - freebsd
+    goarch:
+      - amd64
+      - arm64
+
+dockers:
+  - image_templates:
+      - 'ghcr.io/mozart409/npdel:{{ .Version }}-amd64'
+    use: buildx
+    dockerfile: Dockerfile
+    build_flag_templates:
+      - '--platform=linux/amd64'
+  - image_templates:
+      - 'ghcr.io/mozart409/npdel:{{ .Version }}-arm64v8'
+    use: buildx
+    goarch: arm64
+    dockerfile: Dockerfile
+    build_flag_templates:
+      - '--platform=linux/arm64/v8'
+
+  - build_flag_templates:
+      - '--pull'
+      - '--label=org.opencontainers.image.created={{.Date}}'
+      - '--label=org.opencontainers.image.title={{.ProjectName}}'
+      - '--label=org.opencontainers.image.revision={{.FullCommit}}'
+      - '--label=org.opencontainers.image.version={{.Version}}'
+
+docker_manifests:
+  - name_template: ghcr.io/mozart409/npdel:{{ .Version }}
+
+  # Image name templates to be added to this manifest.
+  # Defaults to empty.
+  - image_templates:
+      - ghcr.io/mozart409/npdel:{{ .Version }}-amd64
+      - ghcr.io/mozart409/npdel:{{ .Version }}-arm64v8
+
+  - image_templates:
+      - foo/bar:{{ .Version }}-amd64
+      - foo/bar:{{ .Version }}-arm64v8
 
 checksum:
   name_template: 'checksums.txt'
